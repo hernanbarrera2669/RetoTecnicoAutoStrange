@@ -1,0 +1,83 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'io.freefair.lombok' version '8.4'
+    id 'net.serenity-bdd.serenity-gradle-plugin' version '4.0.15'
+    id 'com.diffplug.spotless' version '6.25.0'
+}
+
+group = 'com.challenge'
+version = '1.0.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+ext {
+    serenityVersion = '4.2.3'
+    jacksonVersion = '2.15.2'
+    assertjVersion = '3.24.2'
+    jupiterVersion = '5.10.1'
+    junitPlatformSuiteVersion = '1.10.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    // Jackson
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    
+    // Serenity BDD & Screenplay
+    implementation "net.serenity-bdd:serenity-core:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-screenplay:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-screenplay-rest:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-ensure:${serenityVersion}"
+
+    // Testing Support
+    testImplementation "net.serenity-bdd:serenity-junit5:${serenityVersion}"
+    testImplementation "net.serenity-bdd:serenity-cucumber:${serenityVersion}"
+    testImplementation "junit:junit:4.13.2"
+    testImplementation "org.assertj:assertj-core:${assertjVersion}"
+    testImplementation "org.junit.platform:junit-platform-suite:${junitPlatformSuiteVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${jupiterVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}"
+    testRuntimeOnly "org.junit.vintage:junit-vintage-engine:${jupiterVersion}"
+}
+
+serenity {
+    testRoot = "com.challenge"
+    requirementsDir = "src/test/resources/features"
+}
+
+spotless {
+    java {
+        target("src/*/java/**/*.java")
+        googleJavaFormat('1.18.1').aosp()
+        removeUnusedImports()
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('test', Test) {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+    systemProperty "file.encoding", "UTF-8"
+    jvmArgs "-Dfile.encoding=UTF-8"
+}
