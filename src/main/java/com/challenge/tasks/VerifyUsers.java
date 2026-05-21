@@ -1,6 +1,7 @@
 package com.challenge.tasks;
 
 import com.challenge.interactions.api.Get;
+import com.challenge.utils.constants.Resources;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
@@ -27,7 +28,7 @@ public class VerifyUsers implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        actor.attemptsTo(Get.to("/posts/" + this.id).with(requestSpecification -> requestSpecification
+        actor.attemptsTo(Get.to(Resources.PERFORM_ACTION_USER.getValue().replace("{id}", this.id)).with(requestSpecification -> requestSpecification
         .relaxedHTTPSValidation()
         .contentType("application/json")));
     }

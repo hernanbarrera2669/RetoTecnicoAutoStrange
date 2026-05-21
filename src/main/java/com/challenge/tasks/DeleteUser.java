@@ -5,6 +5,9 @@ import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.rest.interactions.Delete;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
+
+import com.challenge.utils.constants.Resources;
+
 import io.restassured.http.ContentType;
 
 public class DeleteUser implements Task {
@@ -23,7 +26,7 @@ public class DeleteUser implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        actor.attemptsTo(Delete.from("/posts/" + this.id).with(requestSpecification -> requestSpecification
+        actor.attemptsTo(Delete.from(Resources.PERFORM_ACTION_USER.getValue().replace("{id}", this.id)).with(requestSpecification -> requestSpecification
         .relaxedHTTPSValidation()
         .contentType(ContentType.JSON)));
     }

@@ -37,6 +37,9 @@ dependencies {
     // Jackson
     implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
     
+    // Datafaker
+    implementation "net.datafaker:datafaker:2.1.0"
+    
     // Serenity BDD & Screenplay
     implementation "net.serenity-bdd:serenity-core:${serenityVersion}"
     implementation "net.serenity-bdd:serenity-screenplay:${serenityVersion}"

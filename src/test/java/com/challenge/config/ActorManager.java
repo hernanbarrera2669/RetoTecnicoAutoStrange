@@ -1,6 +1,7 @@
 package com.challenge.config;
 
-import com.challenge.utils.EnvironmentConfig;
+import com.challenge.utils.config.EnvironmentConfig;
+
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.serenitybdd.screenplay.Actor;
@@ -12,7 +13,8 @@ public final class ActorManager {
     private static Actor actor;
 
     public static void initialize() {
-        actor = Actor.named("Hernancho").whoCan(CallAnApi.at(EnvironmentConfig.getBaseUrl()));
+        net.serenitybdd.screenplay.actors.OnStage.setTheStage(new net.serenitybdd.screenplay.actors.OnlineCast());
+        actor = net.serenitybdd.screenplay.actors.OnStage.theActorCalled("Hernancho").whoCan(CallAnApi.at(EnvironmentConfig.getBaseUrl()));
     }
 
     public static Actor getActor() {

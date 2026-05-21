@@ -2,6 +2,5 @@ Feature: Create User
 
   @CreateUserSuccessfully
   Scenario: Create user successfully
-    #Given the user accesses the application
-    When the user tries to create a user
+    When the user tries to create an user
     Then the user response is 201

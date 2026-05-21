@@ -1,24 +1,17 @@
 package com.challenge.stepdefinitions.base;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
-import io.cucumber.java.Before;
-import net.serenitybdd.screenplay.actors.OnStage;
-import net.serenitybdd.screenplay.actors.OnlineCast;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
+import net.serenitybdd.screenplay.Actor;
 
-import com.challenge.utils.WebSiteTest;
+import org.junit.jupiter.api.BeforeEach;
+import com.challenge.utils.config.EnvironmentConfig;
 
-public class AccessApplication {
+class AccessApplication {
 
-     @Before
-     public void setTheStage() {
-        OnStage.setTheStage(new OnlineCast());
-        String urlBase = WebSiteTest.URL_DATA_TEST.getUrl();
-        theActorCalled("Hernancho");
-        theActorInTheSpotlight().whoCan(CallAnApi.at(urlBase));
+    protected Actor tyber; 
 
-     }
-   
-
+    @BeforeEach
+     void setUp() {
+        tyber = Actor.named("Hernancho").whoCan(CallAnApi.at(EnvironmentConfig.getBaseUrl()));
+    }
 
 }
