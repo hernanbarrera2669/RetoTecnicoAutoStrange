@@ -8,7 +8,10 @@ import lombok.Data;
 @Data
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CreateUserRequest {
+public class GenericUserRequest {
+
+    @JsonProperty("id")
+    private int id;
 
     @JsonProperty("title")
     private String title;

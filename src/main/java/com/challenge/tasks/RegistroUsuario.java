@@ -3,7 +3,7 @@ package com.challenge.tasks;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 import com.challenge.interactions.api.Post;
-import com.challenge.models.request.CreateUserRequest;
+import com.challenge.models.request.GenericUserRequest;
 import com.challenge.utils.constants.Resources;
 import com.challenge.utils.data.CreateRandomData;
 
@@ -28,7 +28,7 @@ public class RegistroUsuario implements Task {
         String title = CreateRandomData.generateName();
         String body = CreateRandomData.generateSentence();
         int userId = CreateRandomData.generateNumber(1, 5);
-        CreateUserRequest userRequest = CreateUserRequest.builder()
+        GenericUserRequest userRequest = GenericUserRequest.builder()
                 .title(title)
                 .body(body)
                 .userId(userId)

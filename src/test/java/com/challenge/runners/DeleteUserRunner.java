@@ -6,10 +6,12 @@ import io.cucumber.junit.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;
 
 @RunWith(CucumberWithSerenity.class)
-@CucumberOptions(features = "src/test/resources/features/EliminarUsuario.feature", 
-    glue = "com.challenge.stepdefinitions", 
+@CucumberOptions(
+
+    glue = { "com.challenge.stepdefinitions", "com.challenge.hooks" },
+    features = { "src/test/resources/features" },
     tags = "@DeleteDataUserSuccessfully",
-    plugin = { "pretty"}
+    snippets = CucumberOptions.SnippetType.CAMELCASE
 )
 public class DeleteUserRunner {
 

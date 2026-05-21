@@ -6,10 +6,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-    features = "src/test/resources/features/ActualizarUsuario.feature",
-    glue = "com.challenge.stepdefinitions.definitions",
+    glue = { "com.challenge.stepdefinitions", "com.challenge.hooks" },
+    features = { "src/test/resources/features" },
     tags = "@UpdateUserSuccessfully",
-    plugin = {"pretty"}
+    snippets = CucumberOptions.SnippetType.CAMELCASE
 )
 public class UpdateUserRunner {
 
