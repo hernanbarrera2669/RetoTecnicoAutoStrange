@@ -1,4 +1,4 @@
-Feature: Delete User
+Feature: Delete data of user
 
   @DeleteDataUserSuccessfully
   Scenario: delete data user successfully

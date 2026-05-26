@@ -1,4 +1,4 @@
-Feature: Update User
+Feature: Update data of user
 
   @UpdateUserSuccessfully
   Scenario: update user data successfully

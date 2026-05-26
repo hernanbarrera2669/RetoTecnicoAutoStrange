@@ -44,3 +44,5 @@ to see the results of the tests use the command:
 ```bash
 open target/site/serenity/index.html
 ```
+
+## para el reto tecnico se crea una carpeta llamada evidencia en la cual estaran los puntos  3 y 4 de los entregables

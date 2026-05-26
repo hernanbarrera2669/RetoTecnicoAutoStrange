@@ -1,4 +1,4 @@
-Feature: Get User
+Feature: Get data of user
 
   @VerifyDataUser
   Scenario: Get the users data in the site
