@@ -23,4 +23,24 @@ Use the Gradle wrapper to run tests:
 ./gradlew test --tests "**/UpdateUserFeature.feature"
 ``` 
 
-## Para correr una clase de prueba en especifico
+## For run a test in specific use: 
+```bash
+./gradlew clean test -Dcucumber.filter.tags="@VerifyDataUser" aggregate
+./gradlew clean test -Dcucumber.filter.tags="@UpdateUserSuccessfully" aggregate
+./gradlew clean test -Dcucumber.filter.tags="@DeleteDataUserSuccessfully" aggregate
+./gradlew clean test -Dcucumber.filter.tags="@CreateUserSuccessfully" aggregate
+
+
+## To run all tests use the command:
+```bash
+./gradlew clean test aggregate
+```
+## To run all tests use the command:
+```bash
+./gradlew clean test aggregate
+```
+
+to see the results of the tests use the command:
+```bash
+open target/site/serenity/index.html
+```

@@ -1,4 +1,4 @@
-Feature: Consultar Usuario
+Feature: Get User
 
   @VerifyDataUser
   Scenario: Get the users data in the site

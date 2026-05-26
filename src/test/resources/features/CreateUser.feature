@@ -1,4 +1,4 @@
-Feature: Create User
+Feature: Post User
 
   @CreateUserSuccessfully
   Scenario: Create user successfully
