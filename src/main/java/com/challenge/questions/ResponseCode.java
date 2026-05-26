@@ -4,10 +4,10 @@ import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 
-public class CodigoRespuesta implements Question<Integer> {
+public class ResponseCode implements Question<Integer> {
 
     public static Question<Integer> es() {
-        return new CodigoRespuesta();
+        return new ResponseCode();
     }
 
     @Override

@@ -31,6 +31,9 @@ public class VerifyUsers implements Task {
         actor.attemptsTo(Get.to(Resources.PERFORM_ACTION_USER.getValue().replace("{id}", this.id)).with(requestSpecification -> requestSpecification
         .relaxedHTTPSValidation()
         .contentType("application/json")));
+
+        com.challenge.models.response.GenericUserResponse response = net.serenitybdd.rest.SerenityRest.lastResponse().as(com.challenge.models.response.GenericUserResponse.class);
+        actor.remember("verifyUserResponse", response);
     }
 
 }

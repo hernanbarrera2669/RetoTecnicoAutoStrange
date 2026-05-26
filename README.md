@@ -18,3 +18,9 @@ Use the Gradle wrapper to run tests:
 ```bash
 ./gradlew clean test
 ```
+## Run with Cucumber
+```bash
+./gradlew test --tests "**/UpdateUserFeature.feature"
+``` 
+
+## Para correr una clase de prueba en especifico

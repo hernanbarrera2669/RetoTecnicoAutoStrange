@@ -13,6 +13,6 @@ import org.junit.runner.RunWith;
     snippets = CucumberOptions.SnippetType.CAMELCASE
 
 )
-public class CrearUsuarioRunner {
+public class CreateUserRunner {
 
 }
