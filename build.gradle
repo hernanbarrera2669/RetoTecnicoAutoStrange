@@ -66,6 +66,11 @@ spotless {
     java {
         target("src/*/java/**/*.java")
         googleJavaFormat('1.18.1').aosp()
+         replaceRegex(
+                'SpaceAfterClass',
+                '(?m)^([^\\n]*(?:class|interface|enum|record)[^\\n]*\\{)\\r?\\n(?!\\s*\\r?\\n)',
+                '$1\n\n'
+        )
         removeUnusedImports()
         trimTrailingWhitespace()
         endWithNewline()
